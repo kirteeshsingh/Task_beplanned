@@ -1,0 +1,114 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #050608;
+    color: #e5edf5;
+  }
+
+  ::selection {
+    background: rgba(34, 211, 238, 0.24);
+    color: #f8fafc;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+
+  .line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .bp-grid-bg {
+    background:
+      radial-gradient(circle at 18% 10%, rgba(34, 211, 238, 0.12), transparent 28rem),
+      radial-gradient(circle at 85% 0%, rgba(37, 99, 235, 0.16), transparent 30rem),
+      linear-gradient(rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(148, 163, 184, 0.045) 1px, transparent 1px),
+      #050608;
+    background-size: auto, auto, 34px 34px, 34px 34px, auto;
+  }
+
+  .bp-panel {
+    border: 1px solid rgba(148, 163, 184, 0.14);
+    background: linear-gradient(180deg, rgba(15, 23, 42, 0.88), rgba(2, 6, 23, 0.78));
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 24px 80px -48px rgba(34, 211, 238, 0.45);
+    backdrop-filter: blur(18px);
+  }
+
+  .bp-panel-soft {
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    background: rgba(15, 23, 42, 0.58);
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.035);
+  }
+
+  .bp-input {
+    border: 1px solid rgba(71, 85, 105, 0.72);
+    background: rgba(2, 6, 23, 0.72);
+    color: #e2e8f0;
+  }
+
+  .bp-input::placeholder {
+    color: #64748b;
+  }
+
+  .bp-input:focus {
+    outline: none;
+    border-color: rgba(34, 211, 238, 0.72);
+    box-shadow: 0 0 0 3px rgba(34, 211, 238, 0.12);
+  }
+
+  .bp-command {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  }
+
+  .bp-scanline {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .bp-scanline::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.07), transparent);
+    transform: translateY(-100%);
+    animation: bp-scan 4.8s ease-in-out infinite;
+  }
+
+  .bp-shimmer {
+    background: linear-gradient(90deg, rgba(15, 23, 42, 0.75), rgba(51, 65, 85, 0.72), rgba(15, 23, 42, 0.75));
+    background-size: 220% 100%;
+    animation: bp-shimmer 1.35s ease-in-out infinite;
+  }
+}
+
+@keyframes bp-scan {
+  0%, 48% { transform: translateY(-100%); }
+  58%, 100% { transform: translateY(100%); }
+}
+
+@keyframes bp-shimmer {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
